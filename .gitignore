@@ -4,3 +4,8 @@
 !init.el
 !.images/
 !.LICENSE
+!pre-init.el
+!pre-early-init.el
+!post-init.el
+!post-early-init.el
+
