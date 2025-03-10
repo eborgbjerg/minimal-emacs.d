@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
  '(package-selected-packages
-   '(cape corfu git-messenger ace-window buffer-terminator hl-todo vterm tomorrow-night-deepblue-theme))
+   '(corfu csv-mode cape git-messenger ace-window buffer-terminator hl-todo vterm tomorrow-night-deepblue-theme))
  '(tool-bar-style 'both))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
