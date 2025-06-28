@@ -121,3 +121,8 @@
 ;; https://protesilaos.com/codelog/2024-12-11-emacs-diff-save-some-buffers/
 ;;
 ;; https://themkat.net/2024/12/17/twenty_four_emacs_packages.html
+
+(with-eval-after-load 'eglot
+  (setq-default eglot-workspace-configuration
+                '((:pylsp . (:plugins (:mccabe (:enabled t :threshold 20))))))
+)
