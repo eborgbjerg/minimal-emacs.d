@@ -65,6 +65,16 @@
   [menu-bar ejner pl]
   '("Documentation" "Fetch documentation" . eldoc-doc-buffer))
 
+(define-key
+  global-map
+  [menu-bar ejner n4]
+  '("--" "--"))
+
+(define-key
+  global-map
+  [menu-bar ejner pl]
+  '("Terminal work" "Terminal work" . my/vterm-session-start))
+
 
 ;; TODO
 ;; Trying out some interesting functions
