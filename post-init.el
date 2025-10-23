@@ -114,6 +114,15 @@
 
 
 
+;; My git repos
+;; Run
+;; M-x magit-list-repositories
+;; to show them
+(setq magit-repository-directories
+      '(("~/git/" . 1)))
+
+
+
 
 ;; TODO
 ;; below some ideas to try out

@@ -6,7 +6,7 @@
  '(auto-save-default nil)
  '(package-selected-packages
    '(ace-window buffer-terminator cape corfu csv-mode git-messenger hl-todo
-                json-mode ox-hugo tomorrow-night-deepblue-theme vterm))
+                json-mode magit ox-hugo tomorrow-night-deepblue-theme vterm))
  '(tool-bar-style 'both))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
