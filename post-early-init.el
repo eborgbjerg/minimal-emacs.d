@@ -70,10 +70,11 @@
   [menu-bar ejner n4]
   '("--" "--"))
 
-(define-key
-  global-map
-  [menu-bar ejner pl]
-  '("Terminal work" "Terminal work" . my/vterm-session-start))
+;; see post-init for the def of this one:
+;; (define-key
+;;   global-map
+;;   [menu-bar ejner pl]
+;;   '("Terminal work" "Terminal work" . my/vterm-session-start))
 
 
 ;; TODO
