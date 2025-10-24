@@ -121,6 +121,7 @@
 (setq magit-repository-directories
       '(("~/git/" . 1)))
 
+(add-hook 'emacs-startup-hook #'magit-list-repositories)
 
 
 
