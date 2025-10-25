@@ -119,7 +119,8 @@
 ;; M-x magit-list-repositories
 ;; to show them
 (setq magit-repository-directories
-      '(("~/git/" . 1)))
+      '(("~/git/" . 1)
+        ("~/.emacs.d/" . 0)))
 
 (add-hook 'emacs-startup-hook #'magit-list-repositories)
 
