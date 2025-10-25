@@ -148,6 +148,10 @@
 
 
 
+;; Replace default buffer list with ibuffer (focus automatically)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
 
 ;;;; vterm sessions — simple config + commands
 (require 'cl-lib)
@@ -410,3 +414,67 @@ With prefix arg RELOAD (\\[universal-argument]), reload the sessions file first.
 (add-hook 'emacs-startup-hook #'my/vterm-session-startup)
 
 (provide 'my-vterm-sessions)
+
+
+
+
+;; GPTEL ;;
+;; --- gptel setup WITHOUT environment variables ---
+(use-package gptel
+  :ensure t
+  :init
+  ;; Tell Emacs to look in ~/.authinfo.gpg for credentials
+  (setq auth-sources '("~/.authinfo.gpg"))
+  ;; Make gptel pull the key from auth-source (host api.openai.com; user apikey)
+  (setq gptel-use-auth-source t
+        gptel-api-key nil        ;; ensure we don't override auth-source
+        gptel-model "gpt-4o-mini")
+
+  ;; Helper: add or update "machine api.openai.com login apikey password <KEY>" in ~/.authinfo.gpg
+  (defun my/gptel-store-openai-key ()
+    "Prompt for an OpenAI API key and store/update it in ~/.authinfo.gpg."
+    (interactive)
+    (require 'auth-source)
+    (let* ((file (expand-file-name "~/.authinfo.gpg"))
+           (host "api.openai.com")
+           (user "apikey")
+           (entry-rx (rx bol "machine " (literal host) " login " (literal user) " password " (+ nonl) eol))
+           (key (read-passwd "Enter OpenAI API key (starts with sk-): ")))
+      ;; Create file if missing so EasyPG can encrypt it on first save
+      (unless (file-exists-p file)
+        (with-temp-file file
+          ;; empty; saving will trigger encryption prompt
+          ))
+      ;; Load, replace-or-append, then save (EasyPG will encrypt on write)
+      (with-temp-buffer
+        (insert-file-contents file)
+        (goto-char (point-min))
+        (if (re-search-forward entry-rx nil t)
+            (replace-match (format "machine %s login %s password %s" host user key) t t)
+          (goto-char (point-max))
+          (unless (bolp) (insert "\n"))
+          (insert (format "machine %s login %s password %s\n" host user key)))
+        ;; Write back encrypted
+        (write-region (point-min) (point-max) file))
+      (message "Saved OpenAI API key to %s" file)))
+
+  ;; Optional: run this once to bootstrap your key
+  ;; M-x my/gptel-store-openai-key
+  :config
+  ;; Convenience keys
+  (define-key global-map (kbd "C-c g") #'gptel)
+  (define-key global-map (kbd "C-c G") #'gptel-send))
+
+
+
+;; ;; Optional Org-mode block support
+;; (use-package gptel-org
+;;   :after gptel)
+
+
+
+
+;; todo
+;; mu4e setup
+;; Error (use-package): Cannot load mu4e
+;; see https://github.com/radian-software/straight.el/issues/491
