@@ -6,5 +6,5 @@
 
                    
 
-(setq minimal-emacs-ui-features '(context-menu tool-bar menu-bar dialogs tooltips))
+(setq minimal-emacs-ui-features '(context-menu menu-bar dialogs tooltips))
 
