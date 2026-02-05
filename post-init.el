@@ -478,3 +478,16 @@ With prefix arg RELOAD (\\[universal-argument]), reload the sessions file first.
 ;; mu4e setup
 ;; Error (use-package): Cannot load mu4e
 ;; see https://github.com/radian-software/straight.el/issues/491
+
+
+
+;; Working on ejbo.dk
+(dired "~/git/chess-games/ejbo-dk-3/hugo-org-per-file/")
+
+;; Convenient
+(dired "~/Hentet/")
+
+;; EWW
+;; (eww "ejbo.dk")
+
+(server-start)

@@ -6,8 +6,8 @@
  '(auto-save-default nil)
  '(package-selected-packages
    '(ace-window buffer-terminator cape corfu csv-mode git-messenger hl-todo
-                json-mode magit ox-hugo tomorrow-night-deepblue-theme vterm))
- '(tool-bar-style 'both))
+                json-mode kiwix magit ox-hugo pygn-mode
+                tomorrow-night-deepblue-theme vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
