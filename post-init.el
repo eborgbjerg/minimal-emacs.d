@@ -473,6 +473,29 @@ With prefix arg RELOAD (\\[universal-argument]), reload the sessions file first.
 
 
 
+;;
+;;
+;;
+;; Perl Navigator LSP
+
+(defalias 'perl-mode 'cperl-mode)
+
+;; Ensure eglot is loaded before modifying eglot variables
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '((perl-mode cperl-mode) . ("perlnavigator" "--stdio"))))
+
+(add-hook 'perl-mode-hook #'eglot-ensure)
+(add-hook 'cperl-mode-hook #'eglot-ensure)
+
+
+;;
+;;
+;;
+;;
+
+
+
 
 ;; todo
 ;; mu4e setup
